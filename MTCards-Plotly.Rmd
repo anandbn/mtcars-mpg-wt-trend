@@ -1,0 +1,54 @@
+---
+title: "Motor Car Trends - Miles Per Gallon vs. Weight"
+author: "Anand Narasimhan"
+date: "6/17/2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+```
+
+## Miles Per Gallon vs. Weight
+
+We'll use the `mtcars` data set that comes with R and display a basic box plot using plot.ly. Some pre-requisites before running this file is to load the plot.ly library.
+
+```{r eval=FALSE}
+require(devtools)
+install_github("ropensci/plotly")
+```
+
+## `mtcars` data
+
+We'll do a quick summary of the `mtcars` data `wt` and `mpg` variables before we plot the data.
+
+```{r echo=FALSE}
+data(mtcars)
+summary(mtcars[,c(1,6)])
+```
+
+Let's also look at the various cyclinders in the data.
+
+```{r echo=FALSE}
+table(mtcars$cyl)
+```
+
+## Mile Per Gallon  vs Weight
+
+Lets plot Miles per Gallon `mpg` with Weight `wt`
+
+```{r message=FALSE,echo=FALSE}
+library(plotly)
+p <- plot_ly(data = mtcars, x = ~mpg, y = ~wt,color = ~cyl)
+p
+```
+
+## Mile Per Gallon  vs Weight - The code
+
+The R code to plot Miles per Gallon `mpg` with Weight `wt` is below
+
+```{r message=FALSE,eval=FALSE}
+library(plotly)
+p <- plot_ly(data = mtcars, x = ~mpg, y = ~wt,color = ~cyl)
+p
+```
+
